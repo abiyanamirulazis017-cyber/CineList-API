@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -45,5 +46,9 @@ class User extends Authenticatable
     public function watchlists()
     {
         return $this->belongsToMany(Movie::class, 'watchlists')->withTimestamps();
+    }
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
     }
 }

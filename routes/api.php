@@ -44,6 +44,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/watchlists',              [WatchlistController::class, 'index']);
     Route::post('/watchlists',             [WatchlistController::class, 'store']);
     Route::delete('/watchlists/{movie_id}', [WatchlistController::class, 'destroy']);
+
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
